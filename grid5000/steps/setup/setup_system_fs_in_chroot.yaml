@@ -1,0 +1,5 @@
+- rootfs:
+
+- configure_system_fs_in_chroot:
+  - on_checkpoint: disabled
+  - configure-system-fs-chroot_in

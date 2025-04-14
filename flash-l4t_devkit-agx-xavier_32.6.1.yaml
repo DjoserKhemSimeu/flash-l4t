@@ -57,10 +57,15 @@ setup:
           set -e
           cd $${l4t_dir}
           ./apply_binaries.sh
+  - setup_system_fs_in_chroot
+  - customize:
+    - breakpoint:
+      - breakpoint
   - setup_for_flashing:
     - install_required_debs:
       - apt-get_out: install binutils usbutils udev python3-yaml liblz4-tool cpio openssh-client libxml2-utils perl-modules-5.26 dosfstools xxd
     - prebuild_flash_image:
+      - unsetup-system-fs-chroot_in
       - exec_out: |
           set -e
           cd $${l4t_dir}
