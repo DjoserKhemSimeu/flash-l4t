@@ -57,6 +57,8 @@ setup:
           set -e
           cd $${l4t_dir}
           ./apply_binaries.sh
+    - fix_apt_sources:
+      - exec_out: sed -i -e 's/<SOC>/t194/' $${l4t_dir}/rootfs/etc/apt/sources.list.d/nvidia-l4t-apt-source.list
   - setup_system_fs_in_chroot
   - customize:
     - breakpoint:
