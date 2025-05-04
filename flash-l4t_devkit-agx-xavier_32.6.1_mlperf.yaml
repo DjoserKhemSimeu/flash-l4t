@@ -70,7 +70,8 @@ setup:
       - apt-get_in: install nvidia-jetpack
   - install_mlperf_inference:
     - install_requirements:
-      - apt-get_in: install cmake python3.8-dev
+      - apt-get_in: install cmake python3.8-dev python3-setuptools python3-wheel
+      - exec_in: wget -O /include/onnx/NvOnnxParser.h https://raw.githubusercontent.com/onnx/onnx-tensorrt/refs/tags/release/8.4-GA/NvOnnxParser.h
     - retrieve_scripts:
       - exec_in: wget https://github.com/DjoserKhemSimeu/inference_results_v1.1/raw/refs/heads/main/closed/NVIDIA/scripts/install_xavier_dependencies.sh
       - exec_in: wget https://github.com/DjoserKhemSimeu/inference_results_v1.1/raw/refs/heads/main/closed/NVIDIA/scripts/requirements_xavier.txt
