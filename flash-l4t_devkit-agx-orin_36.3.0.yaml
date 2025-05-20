@@ -58,15 +58,22 @@ setup:
           set -e
           cd $${l4t_dir}
           ./apply_binaries.sh
-  - setup_system_fs_in_chroot:
-    - force_dns: true
-    - mount_system_fs_in_chroot
+  - setup_system_fs_in_chroot
+  - customize:
+    - breakpoint:
+      - breakpoint
   - setup_for_flashing:
     - install_required_debs:
       - apt-get_out: install binutils usbutils udev python3-yaml liblz4-tool cpio openssh-client libxml2-utils perl-modules-5.26 dosfstools xxd
     - prebuild_flash_image:
+      - unsetup-system-fs-chroot_in
       - exec_out: |
           set -e
+          # Force the creation of the loop devices
+          # (if the loop module is yet to be loaded by the flash script, loop devices won't be created in the out container)
+          for d in {0..7}; do
+            [ -e /dev/loop$d ] || mknod /dev/loop$d b 7 $d
+          done
           cd $${l4t_dir}
           ./flash.sh --no-flash jetson-agx-xavier-devkit mmcblk0p1
 export:
