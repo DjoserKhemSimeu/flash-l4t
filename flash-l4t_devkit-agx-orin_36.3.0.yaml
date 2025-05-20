@@ -91,7 +91,7 @@ export:
           rm -f $KAMELEON_WORKDIR/MAIN_CONTAINER_ID
     - explain_how_to_flash:
       - exec_local: |
-          echo 'You can now flash AGX Xavier modules using a command line such as:'
+          echo 'You can now flash AGX Orin modules using a command line such as:'
           echo
           echo '$ docker run -it --rm --privileged -v /dev/bus/usb:/dev/bus/usb/ -v /dev:/dev $${target_docker_image} -r jetson-agx-orin-devkit mmcblk0p1'
           echo
