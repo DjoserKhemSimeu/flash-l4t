@@ -37,7 +37,7 @@ global:
   fab: "400"
 
   rootfs: "$${l4t_dir}/rootfs"
-  target_docker_image: "$${kameleon_recipe_name}-$${l4t_version_major}.$${l4t_version_minor}.$${l4t_version_patch}-$${boardid}-$${boardsku}-$${boradrev}-$${fab}"
+  target_docker_image: "$${kameleon_recipe_name}-$${l4t_version_major}.$${l4t_version_minor}.$${l4t_version_patch}-$${boardid}-$${boardsku}-$${boardrev}-$${fab}"
 
 bootstrap:
   - prepare_docker
