@@ -31,9 +31,13 @@ global:
   nvidia_BSP_url: "https://developer.download.nvidia.com/embedded/L4T/r$${l4t_version_major}_Release_v$${l4t_version_minor}.$${l4t_version_patch}/T186/Jetson_Linux_R$${l4t_version_major}.$${l4t_version_minor}.$${l4t_version_patch}_aarch64.tbz2"
   nvidia_sample_rootfs_url: "https://developer.nvidia.com/downloads/embedded/l4t/r$${l4t_version_major}_release_v$${l4t_version_minor}.$${l4t_version_patch}/t186/tegra_linux_sample-root-filesystem_r$${l4t_version_major}.$${l4t_version_minor}.$${l4t_version_patch}_aarch64.tbz2"
   l4t_dir: "/nvidia/Linux_for_Tegra"
+  boardid: "2888"
+  boardsku: "0004"
+  boardrev: "K.0"
+  fab: "400"
 
   rootfs: "$${l4t_dir}/rootfs"
-  target_docker_image: "$${kameleon_recipe_name}-$${l4t_version_major}.$${l4t_version_minor}.$${l4t_version_patch}"
+  target_docker_image: "$${kameleon_recipe_name}-$${l4t_version_major}.$${l4t_version_minor}.$${l4t_version_patch}-$${boardid}-$${boardsku}-$${boradrev}-$${fab}"
 
 bootstrap:
   - prepare_docker
